@@ -24,3 +24,4 @@ while True:
 
     if cursor is None:
         break
+
