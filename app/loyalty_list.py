@@ -5,7 +5,7 @@ Fetch all loyalty accounts from Square using cursor pagination
 and print the loyalty account ID and associated customer ID.
 """
 
-from client_creation import client
+from client import client
 
 
 def loyalty_accounts_search() -> None:
@@ -36,4 +36,3 @@ def loyalty_accounts_search() -> None:
 
 if __name__ == "__main__":
     loyalty_accounts_search()
-
