@@ -1,18 +1,4 @@
-# Secrets/Configuration
 .env
-.env.local
-
-# System files
-.DS_Store
-Thumbs.db
-
-# Data
-
-data/
-
-# Python
-__pycache__/
-*.py[cod]
 .venv/
-venv/
-.uv-cache
+__pycache__/
+*.pyc

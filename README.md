@@ -33,6 +33,8 @@ update, or delete records in Square.
 
 ```text
 square-oauth-lab/
+├── .env.example
+├── .gitignore
 ├── README.md
 ├── requirements.txt
 ├── pyproject.toml
@@ -64,10 +66,16 @@ source .venv/bin/activate
 uv pip install -r requirements.txt
 ```
 
-Create a `.env` file in the repository root:
+Create your local environment file from the example template:
+
+```bash
+cp .env.example .env
+```
+
+Then update `.env` with your real Square Sandbox access token:
 
 ```env
-SQUARE_ACCESS_TOKEN=your_square_sandbox_access_token
+SQUARE_ACCESS_TOKEN=your_real_square_sandbox_access_token
 ```
 
 ## Run
@@ -96,7 +104,11 @@ Example record shape:
 
 ## Safety Notes
 
-- Secrets should be stored in `.env` and never committed
+- Use `.env.example` as a public-safe template only. Do not put real secrets in it.
+- Store real secrets only in your local `.env` file.
+- `.env` is ignored by Git through `.gitignore` and should never be committed.
+- Use Square Sandbox credentials for local development and public demo code.
+- If a token is ever exposed, revoke it and create a new one.
 - The script currently targets `SquareEnvironment.SANDBOX`
 - Configuration fails fast if `SQUARE_ACCESS_TOKEN` is missing
 - The current workflow is read-only
