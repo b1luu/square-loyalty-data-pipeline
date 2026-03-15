@@ -51,5 +51,11 @@ def search_loyalty_events() -> list[dict]:
 
 
 if __name__ == "__main__":
-    records = search_loyalty_events()
-    print(json.dumps(records, indent=2))
+    result = client.loyalty.search_events()
+    if result.errors:
+        print("Searching loyalty events failed.")
+        print(result.errors)
+    elif not result.events:
+        print("No loyalty events returned.")
+    else:
+        print(json.dumps(result.events[0].model_dump(), indent=2))

@@ -8,6 +8,7 @@ and print the loyalty account ID and associated customer ID.
 import json
 
 from client import client
+from square.core.api_error import ApiError
 
 
 def loyalty_accounts_search() -> list[dict]:
@@ -17,7 +18,19 @@ def loyalty_accounts_search() -> list[dict]:
     count = 0
 
     while True:
-        result = client.loyalty.accounts.search(cursor=cursor)
+        try:
+            result = client.loyalty.accounts.search(cursor=cursor)
+        except ApiError as error:
+            errors = error.body.get("errors", [])
+
+            if errors and errors[0].get("detail") == "Merchant does not have a loyalty program":
+                print("No loyalty program is configured for this merchant yet.")
+                break
+
+            print("Loyalty accounts search failed.")
+            print(error)
+            break
+
         if result.errors:
             print("Loyalty accounts search failed.")
             print(result.errors)
