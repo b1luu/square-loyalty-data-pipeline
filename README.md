@@ -97,6 +97,12 @@ payment_id
 jHRTyBi8lEMSHsjxZewUjwPiVEFZY
 ```
 
+This chain matters because Square stores customer, loyalty, order, and payment
+data in separate APIs. There is no single object that exposes the full journey
+from loyalty member to completed purchase. By tracing these IDs across systems,
+the sandbox setup becomes useful for loyalty program analysis, customer analysis,
+and purchase-behavior analysis.
+
 ## Notes on safety / secrets
 
 - Sandbox only
