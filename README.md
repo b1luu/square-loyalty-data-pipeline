@@ -7,6 +7,16 @@ This repo is a learning and integration lab, not a production app. The focus is
 on understanding how Square objects connect and building small scripts to create
 and inspect controlled sandbox data.
 
+The main problem behind this project is that Square does not make loyalty
+membership export especially straightforward. Loyalty membership, customers,
+orders, payments, and loyalty events are split across separate APIs, which makes
+it difficult to get an accurate view of who is actually a loyalty member and
+what they purchased.
+
+This project solves that by building a traceable pipeline across those IDs and
+exporting the joined result to CSV. The export provides a reliable record of the
+membership and purchase flow instead of relying on one incomplete API response.
+
 ## Current scope
 
 - Read sandbox loyalty accounts and loyalty events
@@ -14,6 +24,7 @@ and inspect controlled sandbox data.
 - Inspect catalog items, categories, and modifiers before creating orders
 - Trace relationships between `customer_id`, `loyalty_account_id`,
   `loyalty_event_id`, `order_id`, and `payment_id`
+- Export joined loyalty activity to CSV for downstream analysis
 
 ## Repository structure
 
@@ -24,12 +35,15 @@ square-oauth-lab/
 │   ├── config.py
 │   ├── loyalty_events.py
 │   └── loyalty_list.py
+├── data/
+│   └── exports/
 ├── scripts/
 │   ├── accumulate_loyalty_points.py
 │   ├── create_customer.py
 │   ├── create_loyalty_account.py
 │   ├── create_order.py
 │   ├── create_payment.py
+│   ├── export_loyalty_activity_csv.py
 │   ├── get_loyalty_program.py
 │   ├── list_catalog_items.py
 │   └── list_catalog_metadata.py
@@ -40,6 +54,7 @@ square-oauth-lab/
 
 - `app/`: read existing sandbox data
 - `scripts/`: create controlled sandbox test data
+- `data/exports/`: generated CSV output
 
 ## Requirements
 
@@ -72,6 +87,7 @@ SQUARE_ACCESS_TOKEN=your_square_sandbox_access_token
 .venv/bin/python -m scripts.create_order
 .venv/bin/python -m scripts.create_payment
 .venv/bin/python -m scripts.accumulate_loyalty_points
+.venv/bin/python -m scripts.export_loyalty_activity_csv
 ```
 
 ## Example data flow
@@ -99,9 +115,9 @@ jHRTyBi8lEMSHsjxZewUjwPiVEFZY
 
 This chain matters because Square stores customer, loyalty, order, and payment
 data in separate APIs. There is no single object that exposes the full journey
-from loyalty member to completed purchase. By tracing these IDs across systems,
-the sandbox setup becomes useful for loyalty program analysis, customer analysis,
-and purchase-behavior analysis.
+from loyalty member to completed purchase. By tracing these IDs across systems
+and exporting the result, the repo supports more reliable loyalty analysis,
+customer analysis, and purchase-behavior analysis.
 
 Architecture note:
 
@@ -120,5 +136,5 @@ Architecture note:
 
 - Add lightweight tests
 - Normalize joined loyalty, order, and payment outputs
-- Export results to CSV/JSON
+- Add JSON export alongside CSV
 - Refactor repeated API patterns into helpers
