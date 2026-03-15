@@ -92,6 +92,9 @@ SQUARE_ACCESS_TOKEN=your_square_sandbox_access_token
 
 ## Example data flow
 
+In business terms, this shows how a loyalty member can be traced from customer
+profile, to loyalty account, to purchase, to payment, to points earned.
+
 ```text
 customer_id
 J42RRWSJYDP85FKFD046MSRTV4
