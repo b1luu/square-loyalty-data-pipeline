@@ -1,4 +1,4 @@
-# Square OAuth Lab
+# Square API Lab
 
 Python sandbox project for exploring Square API integrations across Loyalty,
 Customers, Orders, Payments, and Catalog.
