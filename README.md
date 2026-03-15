@@ -103,6 +103,12 @@ from loyalty member to completed purchase. By tracing these IDs across systems,
 the sandbox setup becomes useful for loyalty program analysis, customer analysis,
 and purchase-behavior analysis.
 
+Architecture note:
+
+- `loyalty_account_id` is the main bridge between loyalty membership and loyalty events
+- `order_id` is the bridge between loyalty activity and the purchased catalog items
+- `payment_id` confirms the order moved beyond creation into a completed transaction
+
 ## Notes on safety / secrets
 
 - Sandbox only
