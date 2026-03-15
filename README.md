@@ -113,6 +113,30 @@ payment_id
 jHRTyBi8lEMSHsjxZewUjwPiVEFZY
 ```
 
+Sample loyalty account output from the sandbox flow:
+
+```json
+{
+  "id": "ad026a62-f825-4927-98a1-4e093bc9ea6f",
+  "program_id": "66d91e95-c079-49b0-bce6-8fd0677452b1",
+  "balance": 7,
+  "lifetime_points": 7,
+  "customer_id": "J42RRWSJYDP85FKFD046MSRTV4",
+  "enrolled_at": "2026-03-15T06:55:02Z",
+  "created_at": "2026-03-15T05:04:24Z",
+  "updated_at": "2026-03-15T06:55:02Z",
+  "mapping": {
+    "id": "bba2d8d0-1125-46c8-ac0c-5e5ec9027b90",
+    "created_at": "2026-03-15T05:04:24Z",
+    "phone_number": "+14255550101"
+  },
+  "expiring_point_deadlines": null
+}
+```
+
+All example IDs, timestamps, and phone data in this README come from Square
+Sandbox test records created for this lab. They are fake and safe to share.
+
 This chain matters because Square stores customer, loyalty, order, and payment
 data in separate APIs. There is no single object that exposes the full journey
 from loyalty member to completed purchase. By tracing these IDs across systems
