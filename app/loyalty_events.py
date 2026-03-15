@@ -1,6 +1,7 @@
 import json
 
 from client import client
+from square.core.api_error import ApiError
 
 
 def search_loyalty_events() -> list[dict]:
@@ -9,7 +10,12 @@ def search_loyalty_events() -> list[dict]:
     count = 0
 
     while True:
-        results = client.loyalty.search_events(cursor=cursor)
+        try:
+            results = client.loyalty.search_events(cursor=cursor)
+        except ApiError as error:
+            print("Searching loyalty events failed.")
+            print(error)
+            break
 
         if results.errors:
             print("Searching loyalty events failed.")
