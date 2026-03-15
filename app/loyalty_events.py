@@ -1,6 +1,6 @@
 import json
 
-from client import client
+from app.client import client
 from square.core.api_error import ApiError
 
 

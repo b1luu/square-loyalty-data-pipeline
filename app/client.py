@@ -1,7 +1,7 @@
 from square import Square
 from square.environment import SquareEnvironment
 
-from config import SQUARE_ACCESS_TOKEN
+from app.config import SQUARE_ACCESS_TOKEN
 
 client = Square(
     environment=SquareEnvironment.SANDBOX,
