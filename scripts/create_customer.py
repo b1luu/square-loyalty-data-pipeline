@@ -31,7 +31,6 @@ def create_customer() -> dict | None:
         return None
 
     return result.customer.model_dump()
-wa
 
 if __name__ == "__main__":
     customer = create_customer()
