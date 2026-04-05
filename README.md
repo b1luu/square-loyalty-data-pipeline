@@ -1,7 +1,6 @@
-# Square API Lab
+# Square Loyalty Program Retrieval Data Pipeline
 
-Python sandbox project for exploring Square API integrations across Loyalty,
-Customers, Orders, Payments, and Catalog.
+Traceable Square loyalty data pipeline that joins Loyalty, Customers, Orders, Payments, and Catalog data into exportable records for analysis.
 
 This repo is a learning and integration lab, not a production app. The focus is
 on understanding how Square objects connect and building small scripts to create
